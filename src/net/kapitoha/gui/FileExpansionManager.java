@@ -11,13 +11,13 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.text.AttributeSet;
@@ -76,6 +76,7 @@ public class FileExpansionManager extends JFrame {
 	 { 
 	    scrolledContent.add( addElementPanel(filter));
 	 }
+	 contentPanel.setBorder(BorderFactory.createEtchedBorder());
 	 setVisible(true);
     }
     
@@ -132,7 +133,7 @@ public class FileExpansionManager extends JFrame {
 	elPanel.add(nameLabel, "North");
 	elPanel.add(expansionField, "Center");
 	elPanel.add(deleteButton, "East");
-	elPanel.add(new JSeparator(), "South");
+	elPanel.setBorder(BorderFactory.createEtchedBorder());
 	return elPanel;
     }
     

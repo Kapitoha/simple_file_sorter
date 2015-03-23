@@ -1,0 +1,16 @@
+<?xml version= "1.0" encoding= "UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<bean id="connection_properties" class="net.kapitoha.utils.connections.ConnectionProperties" scope="singleton">
+		<constructor-arg name="driver" value="org.h2.Driver"/>
+		<constructor-arg name="user" value="sa" />
+		<constructor-arg name="password" value="" />
+		<!-- Use full path for separated URL or EMBEDDED_PATH keyword to use your jar's folder. 
+		Example: 'jdbc:h2:EMBEDDED_PATH;LOG=0;trace_level_file=0' -->
+		<constructor-arg name="url" value="jdbc:h2:EMBEDDED_PATH;LOG=0;trace_level_file=0" />
+	</bean>
+	
+</beans>

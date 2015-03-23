@@ -107,8 +107,7 @@ public class FileSorter {
 		}
 		if (filterInstance != null && compareFileExpansions(path.toString(), filterInstance.getFilter()))
 		{
-		    destination = pf.getDestination();
-		    System.out.println(destination);
+		    destination = CommonUtilities.decodeUrl(pf.getDestination());
 		    break;
 		}
 	    }
@@ -120,7 +119,7 @@ public class FileSorter {
 		    if (!CommonUtilities.checkPathIfExist(destination))
 			Files.createDirectory(Paths.get(destination));
 		    moveTo(path.toPath(), Paths.get(destination));
-		    System.out.println("Move: " + path.toString() + " to: " + destination);
+		    System.out.println("Move: " + CommonUtilities.decodeUrl(path.toString()) + " to: " + destination);
 			
 		}
 		catch (IOException e)

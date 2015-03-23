@@ -94,6 +94,11 @@ public class ConfigGui extends JDialog {
 	setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	setContentPane(this.contentPanel);
 	addWindowListener(new WindowAction());
+	
+	contentPanel.setBorder(BorderFactory.createEtchedBorder());
+	scrollablePanel.setBorder(BorderFactory.createEtchedBorder());
+	panel.setBorder(BorderFactory.createEtchedBorder());
+	pathField.setBorder(BorderFactory.createEtchedBorder());
 	setVisible(true);
     }
     
@@ -105,7 +110,7 @@ public class ConfigGui extends JDialog {
 	JPanel namePanel = new JPanel(new BorderLayout());
 	JCheckBox enable = new JCheckBox();
 	JLabel filterName = new JLabel(name);
-	JTextField destinationPathField = new JTextField();
+	JTextField destinationPathField = new JTextField(10);
 	JButton changeButton = new JButton(LanguageLoader.getLanguage().getProperty("button_change"));
 	JButton resetButton = new JButton(LanguageLoader.getLanguage().getProperty("button_reset"));
 	
@@ -124,11 +129,12 @@ public class ConfigGui extends JDialog {
 	ep.add(new JLabel(LanguageLoader.getLanguage().getProperty("lab_destination")), "West");
 	ep.add(destinationPathField, "Center");
 	ep.add(buttonPanel, BorderLayout.EAST);
-	ep.add(new JSeparator(), "South");
 
 	enable.addActionListener(new SelectEnableFilterAction(filter));
 	changeButton.addActionListener(new ChangeFilterPathAction(ep, filter));
 	resetButton.addActionListener(new ResetFiltersPath(ep, filter));
+	ep.setBorder(BorderFactory.createEtchedBorder());
+	buttonPanel.setBorder(BorderFactory.createEtchedBorder());
 	return ep;
     }
     

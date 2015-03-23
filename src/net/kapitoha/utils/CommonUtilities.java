@@ -17,16 +17,9 @@ public class CommonUtilities {
 	try
 	{
 	    URL url = CommonUtilities.class.getProtectionDomain().getCodeSource().getLocation();
-	    String path = null;
-	    if (System.getProperty("os.name").toLowerCase().contains("windows"))
-	    {
-	    	path = URLDecoder.decode(url.toString().replaceFirst("file:/", ""), "utf-8");
-	    }
-	    else
-	    	path = URLDecoder.decode(url.toString().replaceFirst("file:", ""), "utf-8");
-	    return Paths.get(path).getParent();
+	    return Paths.get(url.toURI());
 	}
-	catch (UnsupportedEncodingException e)
+	catch (Exception e)
 	{
 	    System.err.println("wrong path");
 	    e.printStackTrace();
@@ -34,9 +27,9 @@ public class CommonUtilities {
 	return null;
     }
     
-    public static Path getJarsPath()
+    public static Path getJarsParentFolder()
     {
-	return Paths.get(getJarsLocation().toString());
+	return Paths.get(getJarsLocation().getParent().toString());
     }
 
     public static boolean checkPathIfExist(String path)
@@ -48,7 +41,27 @@ public class CommonUtilities {
 
     public static String getDefaultDestinationPath(String sourcePath, String filterName)
     {
-        return Paths.get(sourcePath, "SORTED ".concat(filterName)).toString();
+        return Paths.get(decodeUrl(sourcePath), "SORTED ".concat(filterName)).toString();
+    }
+    
+    /**
+     * It's a miracle converting of "abra-kadabra" into real path.
+     * @param url
+     * @return
+     */
+    public static String decodeUrl(String url)
+    {
+	String u = null;
+	try
+	{
+	    u = URLDecoder.decode(url, "UTF-8");
+	}
+	catch (UnsupportedEncodingException e)
+	{
+	    System.err.println("Cannot decode url, so return default");
+	    return url;
+	}
+	return u;
     }
 
 }

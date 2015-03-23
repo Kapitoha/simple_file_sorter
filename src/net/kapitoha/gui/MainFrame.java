@@ -36,6 +36,7 @@ public class MainFrame extends JFrame {
     @SuppressWarnings("serial")
     public void initialize()
     {
+	contentPanel.setBorder(BorderFactory.createEtchedBorder());
 	setSize((int)screenSize.getWidth() >> 1, (int)screenSize.getHeight() >> 1);
 	setTitle(LanguageLoader.getLanguage().getProperty("title_main"));
 	setLocationRelativeTo(null);
@@ -59,6 +60,7 @@ public class MainFrame extends JFrame {
 	js.setBackground(new Color(0, 0, 0, 0));
 	contentPanel.setBackground(new Color(0, 0, 0, 0));
 	setContentPane(mainPane);
+	mainPane.setBorder(BorderFactory.createEtchedBorder());
 	
 	JMenuBar mBar = mainMenu(instance, serviceMenu(instance));
 	setJMenuBar(mBar);
@@ -105,6 +107,7 @@ public class MainFrame extends JFrame {
 		System.exit(0);
 	    }
 	});
+	panel.setBorder(BorderFactory.createEtchedBorder());
 	return panel;
     }
     
@@ -136,6 +139,7 @@ public class MainFrame extends JFrame {
 	panel.add(targetPath, BorderLayout.CENTER);
 	panel.add(configPane, "East");
 	panel.add(new JSeparator(), "South");
+	panel.setBorder(BorderFactory.createEtchedBorder());
 	return panel;
     }
     

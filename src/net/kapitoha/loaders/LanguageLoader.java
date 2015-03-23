@@ -20,7 +20,7 @@ import net.kapitoha.utils.CommonUtilities;
  */
 public class LanguageLoader {
     private static final File languageFilePath = new File(Paths.get(
-	    CommonUtilities.getJarsLocation().toString(), "data",
+	    CommonUtilities.getJarsParentFolder().toString(), "data",
 	    "lang.xml").toString());
     /** Don't panic!!! It's an emergency lang.xml in a byte array shape. */
     private static final byte[] langFile = { 60, 63, 120, 109, 108, 32, 118,

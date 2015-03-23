@@ -15,8 +15,10 @@ public class Images {
     private static Image loadImage(String imageName)
     {
 	Image image = null;
-	try {
-	    image = Toolkit.getDefaultToolkit().createImage(Images.class.getResource(imageName));
+
+	try 
+	{
+	    image = Toolkit.getDefaultToolkit().createImage(Images.class.getResource("/img/" + imageName));
 	}
 	catch(Exception e)
 	{
